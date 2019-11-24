@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+            <script>
+                    function bubbleSort(){
+                    let n=prompt("Enter Number Of elemnts :","1");
+                    let num=Number(n);
+                    if(isNaN(num)){
+                        alert("Number Of Elements Should be a Number");
+                    }
+                    else{
+                        let arr=[];                        
+                        for(let i=0;i<num;i++){
+                            arr[i]=Number(prompt("Enter Element at Index " + i,));
+                            if(isNaN(arr[i])){
+                                arr[i]=0;
+                            }
+                        }
+        
+                        document.getElementById("before").innerHTML=arr;
+                        
+                        let temp;
+    
+                        for(let i=0;i<num-1;i++)
+                        for(let j=0;j<num-i-1;j++){
+                            if(arr[j] > arr[j+1]){
+                                temp=arr[j];
+                                arr[j]=arr[j+1];
+                                arr[j+1]=temp;
+                            }
+                        }
+    
+                        document.getElementById("after").innerHTML=arr;
+                    }
+                }    
+            </script>
+    </head>
+    
+    <body onload="bubbleSort()">
+
+        <h2>BUBBLE SORT</h2>
+        Before Sorting Array:<br>
+        <p id="before"></p><br>
+        After Sorting Array:<br>
+        <p id="after"></p>
+
+    </body>
+</html>

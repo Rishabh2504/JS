@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+            <script>
+                    function clearDisplay(){
+                        document.getElementById("display").innerHTML=""
+                    }
+        
+                    function clearText(){
+                        document.getElementById("name").value="";
+                        document.getElementById("rollNo").value="";
+                        document.getElementById("dob").value="";
+                    }
+        
+        
+                    function check(e){
+                        e.preventDefault();
+                        let sname=document.getElementById("name").value;
+                        let roll=document.getElementById("rollNo").value;
+                        let bday=document.getElementById("dob").value;
+        
+                        let text="";
+                        let text1="";
+        
+                        if(sname==="" || rollNo==="" || bday===""){
+                            text1+="All Fields Are Mandatory!";
+                        }
+                        else{
+                            if((/[^A-Za-z ]/).test(sname)){
+                                text1+="\nName Is Incorrect!";
+                            }
+                            else{
+                                text+="NAME: " + sname + "<br><br>";
+                            }
+        
+                            if(roll.length!==7 || (/[^0-9]/).test(roll)){
+                                text1+="\nRoll Number Is Incorrect!";
+                            }
+                            else{
+                                text+="ROLL NO: " + roll + "<br><br>";
+                            }
+                        }
+            
+                        
+                        if(text1===""){
+                            let d=new Date(bday);
+                            text+="DOB: " + d.toDateString();
+                            document.getElementById("display").innerHTML=text;
+                        }
+                        else{
+                            alert(text1);
+                        }
+                        clearText();
+                     }
+                
+            </script>   
+    </head>
+    
+    <body onload="clearText()">
+        <h2>Student Registration Form</h2>
+
+        <form onsubmit="check(event)">
+            NAME: <input id="name" type="text" onclick="clearDisplay()"><br><br>
+            ROLL NO: <input id="rollNo" type="text"><br><br>
+            DOB: <input id="dob" type="date"><br><br>
+            <input type="submit" value="SUBMIT"><br><br>
+        </form>
+
+        <p id="display"></p>
+
+    </body>
+</html>
